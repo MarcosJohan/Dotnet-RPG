@@ -1,3 +1,4 @@
+using Dotnet_RPG.Services.CharacterService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,9 @@ namespace Dotnet_RPG
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Dotnet_RPG", Version = "v1" });
             });
+
+            services.AddScoped<ICharacterService, CharacterService>();
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
